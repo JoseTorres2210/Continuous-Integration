@@ -47,26 +47,3 @@ class Gym:
             return self.memberships[membership_name]
         else:
             raise ValueError(f"Membership {membership_name} is not available.")
-
-    def calculate_total_cost(self, membership, num_members=1):
-        base_cost = membership.calculate_cost()
-        total_cost = base_cost * num_members
-       
-
-        if membership.name == "Premium" and len(membership.selected_features) >= 1:
-            surcharge = total_cost * 0.15
-            total_cost += surcharge
-            print(f"15% surcharge applied for being a Premium plan with at least 1 feature: ${surcharge}")
-
-        if num_members >= 2:
-            total_cost -= total_cost * self.group_discount
-            print(f"Group discount applied: {self.group_discount * 100}%")
-
-        sorted_special_discounts = sorted(self.special_discounts, key=lambda x: x[0], reverse=True)
-        for threshold, discount in sorted_special_discounts:
-            if total_cost > threshold:
-                total_cost -= discount
-                print(f"Special discount of ${discount} applied for total cost over ${threshold}")
-                break  # Rompe después de aplicar el primer descuento válido
-
-        return total_cost
