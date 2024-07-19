@@ -65,7 +65,7 @@ class Gym:
         total_cost = base_cost * num_members
 
         if membership.name == "Premium" and len(membership.selected_features) >= 1:
-            surcharge = total_cost * 0.15
+            surcharge = total_cost * self.premium_surcharge
             total_cost += surcharge
             print(f"15% surcharge applied for being a Premium plan with at least 1 feature: ${surcharge}")
 
@@ -73,8 +73,7 @@ class Gym:
             total_cost -= total_cost * self.group_discount
             print(f"Group discount applied: {self.group_discount * 100}%")
 
-        sorted_special_discounts = sorted(self.special_discounts, key=lambda x: x[0], reverse=True)
-        for threshold, discount in sorted_special_discounts:
+        for threshold, discount in sorted(self.special_discounts, key=lambda x: x[0], reverse=True):
             if total_cost > threshold:
                 total_cost -= discount
                 print(f"Special discount of ${discount} applied for total cost over ${threshold}")
@@ -89,7 +88,8 @@ class Gym:
             print(f"Membership: {membership.name}")
             print(f"Base Cost: ${membership.base_cost}")
             features = " - ".join(
-                [f'{feature} (Cost ${membership.additional_features[feature]})' for feature in membership.selected_features]
+                [f'{feature} (Cost ${membership.additional_features[feature]})'
+                 for feature in membership.selected_features]
             )
             print(f"Additional Feature(s): {features}")
             print(f"\nTotal Cost: ${total_cost}\n")
