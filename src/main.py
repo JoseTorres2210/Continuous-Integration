@@ -14,9 +14,11 @@ class GymMembership:
         """Adds a feature to the membership if available."""
         if feature_name in self.additional_features:
             self.selected_features.append(feature_name)
-            print("\n-----------------------------------------------------\n" +
-                  f"Adding {feature_name} feature to your membership...\n" +
-                  "-----------------------------------------------------\n ")
+            print(
+                "\n-----------------------------------------------------\n"
+                f"Adding {feature_name} feature to your membership...\n"
+                "-----------------------------------------------------\n"
+            )
         else:
             raise ValueError(f"Feature {feature_name} is not available for {self.name} membership.")
 
@@ -91,5 +93,11 @@ gym.add_membership(premium_membership)
 basic_membership.add_feature("Personal Training")
 basic_membership.add_feature("Group Classes")
 
-print(f"Cost for Basic Membership: ${gym.calculate_total_cost('Basic', num_members=1, apply_premium=False)}")
-print(f"Cost for Premium Membership: ${gym.calculate_total_cost('Premium', num_members=2, apply_premium=True)}")
+print(
+    f"Cost for Basic Membership: "
+    f"${gym.calculate_total_cost('Basic', num_members=1, apply_premium=False)}"
+)
+print(
+    f"Cost for Premium Membership: "
+    f"${gym.calculate_total_cost('Premium', num_members=2, apply_premium=True)}"
+)
