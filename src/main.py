@@ -20,7 +20,9 @@ class GymMembership:
                 "-----------------------------------------------------\n"
             )
         else:
-            raise ValueError(f"Feature {feature_name} is not available for {self.name} membership.")
+            raise ValueError(
+                f"Feature {feature_name} is not available for {self.name} membership."
+            )
 
     def calculate_cost(self):
         """Calculates the total cost of the membership including selected features."""
