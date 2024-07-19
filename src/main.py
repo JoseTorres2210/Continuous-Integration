@@ -4,7 +4,7 @@ Gym Membership Management System
 
 class GymMembership:
     """Represents a gym membership with optional additional features."""
-    def _init_(self, name, base_cost, additional_features=None):
+    def __init__(self, name, base_cost, additional_features=None):
         self.name = name
         self.base_cost = base_cost
         self.additional_features = additional_features if additional_features else {}
@@ -29,7 +29,7 @@ class GymMembership:
 
 class Gym:
     """Manages multiple gym memberships and applies discounts."""
-    def _init_(self):
+    def __init__(self):
         self.memberships = {}
         self.group_discount = 0.10
         self.special_discounts = [

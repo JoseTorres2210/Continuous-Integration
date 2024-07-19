@@ -2,7 +2,6 @@
 Unit tests for the Gym Membership Management System
 """
 
-import pytest
 from src.main import GymMembership, Gym
 
 def test_add_feature():
