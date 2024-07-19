@@ -1,5 +1,5 @@
 import unittest
-import GymMembership as gym
+import main as gym
 
 class TestGymMembership(unittest.TestCase):
 
